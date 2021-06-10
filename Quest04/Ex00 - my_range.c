@@ -1,32 +1,43 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void print_array(int arr[], int size)
+{
+    int i = 0;
+    printf("arr[] = {");
+    while (i < size)
+    {
+        printf("%d", arr[i]);
+        if (i < size - 1)
+        {
+            printf(", ");
+        }
+        i += 1;
+    }
+    printf("}\n");
+}
+
 int* my_range(int min, int max)
 {
-    int n = max - min; 
-    int *ptr = (int*)malloc(n*sizeof(int));
-    int index;
-    //int array[n];           
-    //array[0] = min + 0;
-    //array[1] = min + 1;
-    //...
-    //array[index] = min + index;
-    //array[n] =  min + n;
-   
-    // get the elements of the array 
-    for (int index = 0; index < n; index++) {
-        ptr[index] = min + index;
+    int size = max - min;
+    int* result = malloc(sizeof(int) * size);
+    int i = 0;
+
+    while (min < max)
+    {
+        result[i] = min;
+        i += 1;
+        min += 1;
     }
-    // return the elements of the array 
-    for (index = 0; index < n; index++) { 
-        return ptr; 
-    } 
+    return result;
 }
+
 /*
 int main() {
     
     int min = 4;
     int max = 8;
-    my_range(min, max);
+    int* array = my_range(min, max);
+    print_array(array, max-min);
     return 0;
 }*/
